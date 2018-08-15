@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Reader.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5004</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5004</a> &gt; <span class="el_source">Reader.java</span></div><h1>Reader.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5004;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
+<span class="fc" id="L11">public class Reader {</span>
+  /**
+   * Read the member info file then put the info into the member.
+   * @param fileName The string of file name.
+   * @param member The member which store the member info.
+   */
+  public void readInfo(String fileName, Member member) {
+<span class="pc" id="L18">    try (BufferedReader breader = new BufferedReader(new InputStreamReader(</span>
+        new FileInputStream(fileName), &quot;UTF-8&quot;))) {
+
+      //read the first file line(header) and put it into map
+      String line;
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">      if((line = breader.readLine()) != null) {</span>
+<span class="fc" id="L24">        String[] header = line.split(&quot;,&quot;);</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        for (int i = 0; i &lt; header.length; i++) {</span>
+<span class="fc" id="L26">          header[i] = header[i].replaceAll(&quot;\&quot;&quot;, &quot;&quot;);</span>
+<span class="fc" id="L27">          member.getMap().put(header[i], i);</span>
+        }
+      }
+
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">      while ((line = breader.readLine()) != null) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (line.equals(&quot;&quot;)) {</span>
+<span class="fc" id="L33">          break;</span>
+        }
+<span class="fc" id="L35">        String[] memberInfo = line.split(&quot;,(?=([^\&quot;]*\&quot;[^\&quot;]*\&quot;)*[^\&quot;]*$)&quot;);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for (int i = 0; i &lt; memberInfo.length; i++) {</span>
+<span class="fc" id="L37">          memberInfo[i] = memberInfo[i].replace(&quot;\&quot;&quot;, &quot;&quot;);</span>
+        }
+<span class="fc" id="L39">        member.getInfoList().add(memberInfo);</span>
+<span class="fc" id="L40">      }</span>
+<span class="pc bpc" id="L41" title="6 of 8 branches missed.">    } catch (FileNotFoundException fnfe) {</span>
+<span class="fc" id="L42">      System.out.println(&quot;*** OUPS! A file was not found : &quot; + fnfe.getMessage());</span>
+<span class="fc" id="L43">      fnfe.printStackTrace();</span>
+<span class="nc" id="L44">    } catch (IOException ioe) {</span>
+<span class="nc" id="L45">      System.out.println(&quot;Something went wrong! : &quot; + ioe.getMessage());</span>
+<span class="nc" id="L46">      ioe.printStackTrace();</span>
+<span class="fc" id="L47">    }</span>
+<span class="fc" id="L48">  }</span>
+
+  /**
+   * Read the template file then return the strings of template.
+   * @param template The template file name.
+   * @return The list of strings.
+   */
+  public List&lt;String&gt; readTemplate(String template) {
+<span class="fc" id="L56">    String csvFile = &quot;./&quot; + template;</span>
+    String line;
+<span class="fc" id="L58">    List&lt;String&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="pc" id="L59">    try (BufferedReader breader = new BufferedReader(new InputStreamReader(</span>
+        new FileInputStream(csvFile), &quot;UTF-8&quot;))) {
+<span class="fc bfc" id="L61" title="All 2 branches covered.">      while ((line = breader.readLine()) != null) {</span>
+<span class="fc" id="L62">        result.add(line);</span>
+      }
+<span class="pc bpc" id="L64" title="6 of 8 branches missed.">    } catch (FileNotFoundException fnfe) {</span>
+<span class="fc" id="L65">      System.out.println(&quot;*** OUPS! A file was not found : &quot; + fnfe.getMessage());</span>
+<span class="fc" id="L66">      fnfe.printStackTrace();</span>
+<span class="nc" id="L67">    } catch (IOException ioe) {</span>
+<span class="nc" id="L68">      System.out.println(&quot;Something went wrong! : &quot; + ioe.getMessage());</span>
+<span class="nc" id="L69">      ioe.printStackTrace();</span>
+<span class="fc" id="L70">    }</span>
+<span class="fc" id="L71">    return result;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

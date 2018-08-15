@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/Run.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/Process.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/ParseArgument.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/Writer.java">
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/Reader.java">
+<error line="23" column="9" severity="warning" message="WhitespaceAround: &apos;if&apos; is not followed by whitespace. Empty blocks may only be represented as {} when not part of a multi-block statement (4.1.3)" source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="/Users/Jessielee/Documents/GitHub/2018SPCS5004SEA/assignment-9-jessielee716-stephenxi-liuyl/src/main/java/edu/neu/ccs/cs5004/Member.java">
+</file>
+</checkstyle>
